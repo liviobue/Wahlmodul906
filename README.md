@@ -1,2 +1,2 @@
-# Wahlmodul906
-Repository für das Wahlmodul 906 an der Technischen Berufsschule Zürich
+# M906
+Repository für Modul 906
