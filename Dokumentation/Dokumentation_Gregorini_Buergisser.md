@@ -33,7 +33,7 @@ nachvollziehen können.
 
 # Planung
 ## Toolumgebung
-Als Basis für alle Programme/Dienste verwenden wir die TBZ-Cloud und Dienste aus der Public Cloud. Für die Evaluation steht uns eine virtuelle Maschine im TBZ Netzwerk zu Verfügung. 
+Als Basis für alle Programme/Dienste verwenden wir die TBZ-Cloud und Dienste aus der Public Cloud. Für die Evaluation steht uns eine virtuelle Maschine im TBZ Netzwerk zu Verfügung.
 
 Folgende Tools verwenden wir in unserer DevOps Umgebung:
 #### Planungstools
@@ -52,7 +52,7 @@ Folgende Tools verwenden wir in unserer DevOps Umgebung:
 - Jenkins
 kubectl apply -f./jenkins.yaml
 
-#### Continuous Deploymwent (CD)
+#### Continuous Deployment (CD)
 - Ansible
 
 #### Operate
