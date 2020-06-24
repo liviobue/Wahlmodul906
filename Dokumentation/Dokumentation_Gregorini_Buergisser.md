@@ -18,7 +18,7 @@
 4. [Schluss](#Schluss)
 
 ## Einleitung
-In dieser Dokumentation werden die Arbeitsschritte und KOnfigurationen für eine DevOps-Infrastruktur dokumentiert. Die Dokumentation wird an der Technischen Berufsschule im Rahmen vom Wahlmodul 906 durchgeführt. Mit diesem Projekt haben sich Livio Bürgisser und Leandro Gregorini über 4 Wochen beschäftigt.
+In dieser Dokumentation werden die Arbeitsschritte und Konfigurationen für eine DevOps-Infrastruktur dokumentiert. Die Dokumentation wird an der Technischen Berufsschule im Rahmen vom Wahlmodul 906 durchgeführt. Mit diesem Projekt haben sich Livio Bürgisser und Leandro Gregorini über 4 Wochen beschäftigt.
 
 ### Summary
 In einer kurzen Planungsphase haben wir das VPN eingerichtet, DevOps-Tools ausgewählt, später installiert, sowie konfiguriert und getestet. Damit die gesamte Umgebung auch funktioniert haben wir eine kleines Testprogramm geschrieben.
@@ -63,3 +63,6 @@ kubectl apply -f./jenkins.yaml
 
 #### Monitoring
 - Nagios
+
+
+
