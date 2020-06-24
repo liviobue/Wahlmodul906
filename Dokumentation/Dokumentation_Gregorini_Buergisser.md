@@ -58,9 +58,6 @@ kubectl apply -f./jenkins.yaml
 #### Operate
 - Ansible
 
-#### Testing
-- Selenium
-
 #### Monitoring
 - Nagios
 
