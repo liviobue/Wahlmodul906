@@ -37,7 +37,7 @@ Als Basis für alle Programme/Dienste verwenden wir die TBZ-Cloud und Dienste au
 
 Folgende Tools verwenden wir in unserer DevOps Umgebung:
 #### Planungstools
-- GitHub (Issues/Anforderungen/ToDos)
+- Kenboard (Issues/Anforderungen/ToDos)
 
 #### Versionsverwaltung
 - GitHub
