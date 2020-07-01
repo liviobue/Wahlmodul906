@@ -40,29 +40,23 @@ Kubernetes, auch k8s genannt, oder kurz „kube“ ist eine Open Source-Plattfor
 Folgende Tools verwenden wir in unserer DevOps Umgebung:
 ## Tools
 - Kenboard (Issues/Anforderungen/ToDos)
-
 Kenboard ist ein Planungtool indem man seine Projekte hinzufügen und Aufgaben verwalten kann. Die Aufagben bzw. Issues werden in den Spalten "To do", "In progrss" und "Done" entsprechend hin und her geschoben. Das Tool wird in der TBZ Cloud installiert.
 
 ### Versionsverwaltung
 - GitHub
-
 Unser Code wird auf dem Versionalverwaltungstool GitHub verwaltet. Der Service bietet kostenfreie öffentliche Repositories und Collaboration-Funktionen für die Entwicklung von Open-Source-Software. Gleichzeitig können kleine und mittelständische Unternehmen (KMU) gegen eine Gebühr private Repositories und Collaboration-Feature mieten. GitHub ermöglicht Anwendern in seinen öffentlichen Repositories Software zu verändern, anzupassen und weiterzuentwickeln. Jedes Projekt wird als Fork (Abspaltung) bezeichnet. Entwickler können auf GitHub als Team oder allein arbeiten. Öffentliche Nutzer, wie wir, erstellen dafür Profile, welche ihre Respositories und öffentlichen Aktivitäten zeigen. Zudem helfen die Profile Entwicklern beim Finden von Projekten. Den Link zu GitHub finden sie [Hier](https://github.com/).
 
 ### Code/Entwicklungsumgebung
 - Atom
-
 Den Code selbst haben wir mit der IDE Atom Bei Atom handelt es sich um einen Quelltexteditor von GitHub, mit dem sich unter anderem Programme für die Software-Entwicklungs-Plattform GitHub erstellen lassen. Die integrierte Entwicklungsumgebung oder IDE stellt Programmierern eine Sammlung der wichtigsten Werkzeuge zur Softwareentwicklung unter einer Oberfläche zur Verfügung. Die Arbeit für die Erstellung von Programmen wird dadurch vereinfacht.Für die Arbeit mit Quelltext bietet Atom neben farbigem Syntax-Highlighting auch die Autovervollständigung von eingetipptem Code. Welche Programmiersprache genutzt wird, erkennt Atom dabei anhand der Dateiendung der Quelltext-Datei. Ein Suche ist wie eine Vorschau ebenfalls in Atom zu finden und Code lässt sich in einer Datei oder in mehreren Dateien ersetzen. Mit dem Quelltexteditor kann der Entwickler mehrere Dateien parallel bearbeiten, um Code zu übernehmen oder zu vergleichen. Dazu lässt sich das Editor-Fenster teilen, um die Code-Dateien im Blick zu haben. Zudem bietet Atom einen integrierten Dateimanager, der einzelne Projekt oder mehrere Projekte sowie einzelne Dateien öffnet. Atom ist als Software von GitHub eng mit dem Versionssystem von Git und GitHub verbunden. Somit lässt sich aus dem Editor heraus ein Branch, Commit, Push und Pull durchführen. Dieses Tool wurde auf unseren privaten Laptops installiert.
 
 ### Build
 - Maven
-
 Maven ist ein Werkzeug um den build-Prozess eines Projektes zu unterstützen. Das Stichwort ist hier Time-To-Market. Das bedeutet ein Build Prozess muss automatisiert ablaufen. Ein solches Werkzeug ist Maven, um in strukturierter Weise eine Build zu erstellen. Das Build-Management-Tool der Apache Software Foundation und basiert auf Java. Mit ihm kann man insbesondere Java-Programme standardisiert erstellen und verwalten
 
 ### Continuous Integration (CI)
 - Jenkins
-
 Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-System (CI-System), das bei agiler Softwareentwicklung genutzt wird: Es sorgt dafür, dass kleine Code-Änderungen immer sofort getestet und in die Software eingespielt werden. Es wird als Fork der Software Hudson von Sun, heute Oracle, betrachtet.
-
 - Alle Versionen der einzelnen Entwickler müssen so angepasst werden, dass es keine Inkompatibilitäten gibt und alle Teile reibungslos miteinander funktionieren.
 - Damit die Inkompatibilitäten nicht erst kurz vor Schluss des Entwicklungszyklus sichtbar werden, gibt es Jenkins.
 - Voraussetzung ist, dass bei der Entwicklung bereits ein Versionskontrollsystem wie Git eingesetzt wird und die Entwickler regelmäßig Ihren Entwicklungszustand einpflegen.
@@ -70,7 +64,8 @@ Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-Syste
 - Andernfalls benachrichtigt Jenkins das uns über einen Fehler.
 
 ### Continuous Deployment (CD)
--
+- Docker
+Das schlussendliche Programm haben wir in einem Docker-Container ausgeführt.
 
 ### REST
 REST-API steht für „Representational State Transfer - Application Programming Interface“. Sie macht den Austausch von Informationen möglich, wenn diese sich auf unterschiedlichen Systemen befinden.
