@@ -122,7 +122,9 @@ Zusätzlich hat es Spass gemacht die einzelnen Aufgaben zu automatisieren.
 |         | Jenkins            | Kanboard         | Maven            | Docker          | Kubernetes            | REST             |
 |---------|--------------------|------------------|------------------|-----------------|-----------------------|------------------|
 | Livio   | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
-| Leandro | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
+| Leandro | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Geringe Kennisse | Mittlere Kenntnisse |
+
+Wie man sehen kann hat sich unser Wissensstand in allen Beriechen verbessert.
 
 # Schlusswort
 Wir können das Modul mit einem glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen.
