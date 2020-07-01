@@ -6,15 +6,10 @@
     1. [Anforderungen](#Anforderungen)
     2. [Summary](#Summary)
 2. [Planung](#Planung)
-    1. [Dienste](#Dienste)
-    2. [DockerHub](#DockerHub)
-    3. [Umgebung](#Umgebung)
-    4. [Docker-Compose](#Docker-Compose)
+    1. [Toolumgebung](#Toolumgebung)
+    2. [Tools](#Tools)
 3. [Realisation](#Realisation)
-    1. [Infrastruktur](#Infrastruktur)
-    2. [Vagrantfile](#Vagrantfile)
-    3. [Dockercomposefile](#Dockercomposefile)
-    4. [Testfälle](#Testfälle)
+    1. [Dienste](#Dienste)
 5. [Reflexion](#Reflexion)    
 4. [Schluss](#Schluss)
 
@@ -78,6 +73,7 @@ Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-Syste
 - 
 
 # Realisation
+## Dienste
 Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Da einige von unseren Diensten in der TBZ Cloud liefen, konnten wir die bereits vorhanden Konfigurationen von Kubernetes benutzen. Die entsprechenden "yaml"-Files standen uns bereits zur verfügung. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. 
 Maven konnten wir mit folgenden Befhelen installieren und bereits ein kleines Test-Programm builden.
 ```
