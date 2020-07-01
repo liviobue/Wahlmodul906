@@ -78,11 +78,9 @@ REST-API steht für „Representational State Transfer - Application Programming
 
 # Realisation
 ## Dienste
-Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Da einige von unseren Diensten in der TBZ Cloud liefen, konnten wir die bereits vorhanden Konfigurationen von Kubernetes benutzen. Die entsprechenden "yaml"-Files standen uns bereits zur verfügung. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. Über Jenkins haben wir nun unser Java-Programm getestet. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
-![Jenkins](bilder/jenkins.png)
-Über die REST-API haben wir in Kanboard ein Projekt angelegt.
-![kanboard](bilder/kanboard.png)
-Maven konnten wir mit folgenden Befhelen installieren und bereits ein kleines Test-Programm builden.
+Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. 
+### Schritt 1
+Maven konnten wir mit folgenden Befehlen installieren und bereits ein kleines Java-Testprogramm builden.
 ```
 sudo apt-get install openjdk-8-jdk maven
 cd data
@@ -91,7 +89,13 @@ cd my-app/
 mvn package
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
-Unser Beispiel-Programm gibt einfach "Hello World" aus.Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Anschliessend haben wir zum Ausführen des Programm ein Docker file erstellt:
+Unser Beispiel-Programm gibt einfach "Hello World" aus. Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
+Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den bereits vorhandenen Konfigurationen von Kubernetes benutzen. Wir mussten daher nur noch die entsprechenden "yaml"-Files ausführen. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. 
+![Jenkins](bilder/jenkins.png)
+Über die REST-API haben wir in Kanboard ein Projekt angelegt.
+![kanboard](bilder/kanboard.png)
+
+ Anschliessend haben wir zum Ausführen des Programm ein Docker file erstellt:
 ```
 FROM openjdk:latest
 COPY /target /tmp
@@ -108,6 +112,17 @@ In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedo
 Es war spannend zu sehen, wie man die einzelnen Dienste miteinander verbinden kann.
 Wir haben verschiedene Möglichkeiten wie z.B.: REST-API kennengelernt.
 Zusätzlich hat es Spass gemacht die einzelnen Aufgaben zu automatisieren.
+### Kenntnisse vor dem Modul
+|         | Jenkins            | Kanboard         | Maven            | Docker          | Kubernetes            | REST             |
+|---------|--------------------|------------------|------------------|-----------------|-----------------------|------------------|
+| Livio   | Leichte Kenntnisse | Keine Kenntnisse | Keine Kenntnisse | Gute Kenntnisse | Sehr geringe Kennisse | Keine Kenntnisse |
+| Leandro | Keine Kenntnisse | Keine Kenntnisse | Keine Kenntnisse | Gute Kenntnisse | Keine Kennisse | Keine Kenntnisse |
+
+### Kenntnisse nach dem Modul
+|         | Jenkins            | Kanboard         | Maven            | Docker          | Kubernetes            | REST             |
+|---------|--------------------|------------------|------------------|-----------------|-----------------------|------------------|
+| Livio   | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
+| Leandro | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
 
 # Schlusswort
-Wir können das Modul mit einem Glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen.
+Wir können das Modul mit einem glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen.
