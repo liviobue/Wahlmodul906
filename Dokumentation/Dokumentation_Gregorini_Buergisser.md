@@ -75,6 +75,9 @@ Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-Syste
 # Realisation
 ## Dienste
 Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Da einige von unseren Diensten in der TBZ Cloud liefen, konnten wir die bereits vorhanden Konfigurationen von Kubernetes benutzen. Die entsprechenden "yaml"-Files standen uns bereits zur verfügung. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. 
+![Jenkins](bilder/jenkins.png)
+Über die REST-API haben wir in Kanboard ein Projekt angelegt.
+![kanboard](bilder/kanboard.png)
 Maven konnten wir mit folgenden Befhelen installieren und bereits ein kleines Test-Programm builden.
 ```
 sudo apt-get install openjdk-8-jdk maven
@@ -84,7 +87,15 @@ cd my-app/
 mvn package
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
-Unser Beispiel-Programm gibt einfach "Hello World" aus. 
+Unser Beispiel-Programm gibt einfach "Hello World" aus.Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Anschliessend haben wir zum Ausführen des Programm ein Docker file erstellt:
+```
+FROM openjdk:latest
+COPY /target /tmp
+```
+Mit folgendem Befehl kann man das Java-Programm ausführen nachdem das Image gebuildet wurde.
+```docker run --rm javaapp java -cp tmp/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App```
+Wenn alles funktioniert hat, sollte folgende ausgabe erscheinen:
+![javaapp](bilder/javaapp.png)
 
 # Reflexion
 In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedoch haben wir noch nie alle miteinader verknüpfet wie in diesem Projekt. Wir haben also das erste mal eine komplette DevOps-Infrastruktur aufbauen können.
