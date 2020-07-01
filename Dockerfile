@@ -1,5 +1,5 @@
 FROM openjdk:latest
 COPY /target /var/www/html
-RUN apt-get update
-RUN apt-get -y install apache2
+CMD apt-get update
+CMD apt-get -y install apache2
 EXPOSE 80
