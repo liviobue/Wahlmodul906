@@ -96,9 +96,11 @@ FROM openjdk:latest
 COPY /target /tmp
 ```
 Mit folgendem Befehl kann man das Java-Programm ausführen nachdem das Image gebuildet wurde.
-```docker run --rm javaapp java -cp tmp/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App```
+```
+docker run --rm javaapp java -cp tmp/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+```
 Wenn alles funktioniert hat, sollte folgende ausgabe erscheinen:
-![javaapp](bilder/javaapp.png)
+![javaapp](bilder/myjavaapp.png)
 
 # Reflexion
 In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedoch haben wir noch nie alle miteinader verknüpfet wie in diesem Projekt. Wir haben also das erste mal eine komplette DevOps-Infrastruktur aufbauen können.
