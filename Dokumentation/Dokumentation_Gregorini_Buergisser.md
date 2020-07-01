@@ -105,6 +105,9 @@ Wenn alles funktioniert hat, sollte folgende ausgabe erscheinen:
 
 # Reflexion
 In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedoch haben wir noch nie alle miteinader verknüpfet wie in diesem Projekt. Wir haben also das erste mal eine komplette DevOps-Infrastruktur aufbauen können.
+Es war spannend zu sehen, wie man die einzelnen Dienste miteinander verbinden kann.
+Wir haben verschiedene Möglichkeiten wie z.B.: REST-API kennengelernt.
+Zusätzlich hat es Spass gemacht die einzelnen Aufgaben zu automatisieren.
 
 # Schlusswort
 Wir können das Modul mit einem Glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen.
