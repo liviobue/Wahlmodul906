@@ -78,7 +78,7 @@ REST-API steht für „Representational State Transfer - Application Programming
 
 # Realisation
 ## Dienste
-Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Da einige von unseren Diensten in der TBZ Cloud liefen, konnten wir die bereits vorhanden Konfigurationen von Kubernetes benutzen. Die entsprechenden "yaml"-Files standen uns bereits zur verfügung. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten.
+Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Da einige von unseren Diensten in der TBZ Cloud liefen, konnten wir die bereits vorhanden Konfigurationen von Kubernetes benutzen. Die entsprechenden "yaml"-Files standen uns bereits zur verfügung. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. Über Jenkins haben wir nun unser Java-Programm getestet. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
 ![Jenkins](bilder/jenkins.png)
 Über die REST-API haben wir in Kanboard ein Projekt angelegt.
 ![kanboard](bilder/kanboard.png)
