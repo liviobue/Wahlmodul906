@@ -17,7 +17,7 @@
 In dieser Dokumentation werden die Arbeitsschritte und Konfigurationen für eine DevOps-Infrastruktur dokumentiert. Die Dokumentation wird an der Technischen Berufsschule im Rahmen vom Wahlmodul 906 durchgeführt. Mit diesem Projekt haben sich Livio Bürgisser und Leandro Gregorini über 4 Wochen beschäftigt.
 
 ### Summary
-In einer kurzen Planungsphase haben wir das VPN eingerichtet, DevOps-Tools ausgewählt, später installiert, sowie konfiguriert und getestet. Damit die gesamte Umgebung auch funktioniert haben wir eine kleines Testprogramm geschrieben.
+In einer kurzen Planungsphase haben wir das VPN eingerichtet, DevOps-Tools ausgewählt, und später installiert, sowie konfiguriert und getestet. Damit die gesamte Umgebung auch funktioniert haben wir eine kleines Testprogramm geschrieben, welches den gesamten Durchgang durchläuft.
 
 ### Anforderungen
 Die Arbeit besteht aus einem Aufbau von einer DevOps-Infrastruktur. Folgende Anforderungen sind vorausgesetzt:
@@ -39,9 +39,14 @@ Kubernetes, auch k8s genannt, oder kurz „kube“ ist eine Open Source-Plattfor
 
 Folgende Tools verwenden wir in unserer DevOps Umgebung:
 ## Tools
-- Kenboard (Issues/Anforderungen/ToDos)
+### Kanboard
+- Kanboard (Project Management Software)
 
-Kenboard ist ein Planungtool indem man seine Projekte hinzufügen und Aufgaben verwalten kann. Die Aufagben bzw. Issues werden in den Spalten "To do", "In progrss" und "Done" entsprechend hin und her geschoben. Das Tool wird in der TBZ Cloud installiert.
+Kanboard ist eine kostenlose Open-Source-Projektmanagementsoftware, die sich auf die Kanban-Methodik konzentriert. Es visualisiert Ihre Arbeit klar und einfach, sodass Sie die laufenden Arbeiten einschränken, Projektaufgaben besser verwalten, den aktuellen Status eines Projekts einfach verfolgen und sich auf Ihr Ziel konzentrieren können. Das Tool wurde in der TBZ Cloud installiert. Folgende Aufzählung gehört zu den Tagesaufgaben von Kanboard.
+- Visualisieren Sie Ihre Arbeit
+- Beschränken Sie Ihre laufenden Arbeiten, um sich auf Ihr Ziel zu konzentrieren
+- Ziehen Sie Aufgaben per Drag & Drop, um Ihr Projekt zu verwalten
+- Selbst gehostet Super einfache Installation
 
 ### Versionsverwaltung
 - GitHub
@@ -61,7 +66,7 @@ Maven ist ein Werkzeug um den build-Prozess eines Projektes zu unterstützen. Da
 ### Continuous Integration (CI)
 - Jenkins
 
-Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-System (CI-System), das bei agiler Softwareentwicklung genutzt wird: Es sorgt dafür, dass kleine Code-Änderungen immer sofort getestet und in die Software eingespielt werden. Es wird als Fork der Software Hudson von Sun, heute Oracle, betrachtet.
+Jenkins ist ein in Java programmiertes, Continuous-Integration-System, das bei agiler Softwareentwicklung genutzt wird. Es sorgt dafür, dass kleine Code-Änderungen immer sofort getestet und in die Software eingespielt werden.
 - Alle Versionen der einzelnen Entwickler müssen so angepasst werden, dass es keine Inkompatibilitäten gibt und alle Teile reibungslos miteinander funktionieren.
 - Damit die Inkompatibilitäten nicht erst kurz vor Schluss des Entwicklungszyklus sichtbar werden, gibt es Jenkins.
 - Voraussetzung ist, dass bei der Entwicklung bereits ein Versionskontrollsystem wie Git eingesetzt wird und die Entwickler regelmäßig Ihren Entwicklungszustand einpflegen.
@@ -71,15 +76,20 @@ Jenkins ist ein in Java programmiertes, sogenanntes Continuous-Integration-Syste
 ### Continuous Deployment (CD)
 - Docker
 
-Das schlussendliche Programm haben wir in einem Docker-Container ausgeführt.
+Das schlussendliche Programm haben wir in einem Docker-Container ausgeführt. Dazu haben wir selbst ein Docker Image erstellt.
 
 ### REST
 REST-API steht für „Representational State Transfer - Application Programming Interface“. Sie macht den Austausch von Informationen möglich, wenn diese sich auf unterschiedlichen Systemen befinden.
 
 # Realisation
 ## Dienste
-Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. 
+Nachdem wir unsere Tools gefunden haben, konnten wir mit der Installation und Konfiguration beginnen. Folgende Grafik zeigt unsere Infrastruktur:
+![Infrastruktur](bilder/infrastruktur.png)
+
 ### Schritt 1
+ZUerst mus sman das eigentliche Programm schreiben. Dazu nutzen wir die Entwicklungsumgebung Atom. Anhand der Atom Software konnten wir gleich unseren GitHub Account verknüpfen und unser erstelltes Repository verknüpfen.
+
+### Schritt 2
 Maven konnten wir mit folgenden Befehlen installieren und bereits ein kleines Java-Testprogramm builden.
 ```
 sudo apt-get install openjdk-8-jdk maven
@@ -89,13 +99,17 @@ cd my-app/
 mvn package
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
-Unser Beispiel-Programm gibt einfach "Hello World" aus. Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
+Unser Beispiel-Programm gibt einfach "Hello World" aus. Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. 
+
+### Schritt 3
+Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
 Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den bereits vorhandenen Konfigurationen von Kubernetes benutzen. Wir mussten daher nur noch die entsprechenden "yaml"-Files ausführen. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. 
 ![Jenkins](bilder/jenkins.png)
 Über die REST-API haben wir in Kanboard ein Projekt angelegt.
 ![kanboard](bilder/kanboard.png)
 
- Anschliessend haben wir zum Ausführen des Programm ein Docker file erstellt:
+### Schritt 4
+ Anschliessend haben wir zum Ausführen des Programm ein Dockerfile erstellt:
 ```
 FROM openjdk:latest
 COPY /target /tmp
@@ -108,10 +122,8 @@ Wenn alles funktioniert hat, sollte folgende ausgabe erscheinen:
 ![javaapp](bilder/myjavaapp.png)
 
 # Reflexion
-In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedoch haben wir noch nie alle miteinader verknüpfet wie in diesem Projekt. Wir haben also das erste mal eine komplette DevOps-Infrastruktur aufbauen können.
-Es war spannend zu sehen, wie man die einzelnen Dienste miteinander verbinden kann.
-Wir haben verschiedene Möglichkeiten wie z.B.: REST-API kennengelernt.
-Zusätzlich hat es Spass gemacht die einzelnen Aufgaben zu automatisieren.
+In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedoch haben wir noch nie alle miteinader verknüpfet wie in diesem Projekt. Wir haben also das erste mal eine komplette DevOps-Infrastruktur aufbauen können. Es war spannend zu sehen, wie man die einzelnen Dienste miteinander verbinden kann. Wenn man keine der Tools kennt, wird es am Anfang sehr schwer sein. Sobald man die grundsätzlichen Befehle und Abläufe kennt, wird das ganze zu einem Kinderspiel. In diesem Modul haben wir besonders viele neue Programme kennengelernt. Unter anderem Kanboard, Maven, Kubernetes oder die Schnittstelle REST. Wie auch die erste Leistungsbeurteilung hat mir diese Arbeit, durch die viele praktische Arbeit gefallen. Vor allem habe ich in diesem Modul ein richtiges Informatik-Projekt durchführen dürfen. Mit Dokumentation, Praktischer Arbeit und aufwändiger Planung. Zudem haben wir noch unsere Kenntnisse vor und nach dem modul miteinander verglichen.
+
 ### Kenntnisse vor dem Modul
 |         | Jenkins            | Kanboard         | Maven            | Docker          | Kubernetes            | REST             |
 |---------|--------------------|------------------|------------------|-----------------|-----------------------|------------------|
@@ -124,7 +136,7 @@ Zusätzlich hat es Spass gemacht die einzelnen Aufgaben zu automatisieren.
 | Livio   | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
 | Leandro | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Geringe Kennisse | Mittlere Kenntnisse |
 
-Wie man sehen kann hat sich unser Wissensstand in allen Beriechen verbessert.
+Wie man sehen kann hat sich unser Wissensstand in allen Beriechen verbessert. Zum Teil waren die Wissensständ noch sehr tief, diese Lücken konnten nun gefüllt werden. 
 
 # Schlusswort
-Wir können das Modul mit einem glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen.
+Wir können das Modul mit einem glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen. Schlussendlich habe ich aber das Gefühl, dass es für kleine Unternhemen nicht lohnt eine eigene DevOps-Infrastruktur aufzubauen. Diese Firmen sollte lieber auf MIcrosoft Azure, GitHub oder Amazom Services setzen.
