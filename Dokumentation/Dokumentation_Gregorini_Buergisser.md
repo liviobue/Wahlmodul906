@@ -99,11 +99,11 @@ cd my-app/
 mvn package
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
-Unser Beispiel-Programm gibt einfach "Hello World" aus. Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen. 
+Unser Beispiel-Programm gibt einfach "Hello World" aus. Nun haben wir mit unserem Programm den "build"-Prozess abgeschlossen.
 
 ### Schritt 3
 Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unser Repositroy mit Jenkins verknüpft. Mit Jenkins haben wir das Programm erfolgreich getestet und integriert. Anhand der REST-API haben wir zudem noch ein Projekt auf Kenboard hinzugefügt. Falls ein Test fehlgeschalgen ist, wird der Benutzer benachrichtigt.
-Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den bereits vorhandenen Konfigurationen von Kubernetes benutzen. Wir mussten daher nur noch die entsprechenden "yaml"-Files ausführen. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten. 
+Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den bereits vorhandenen Konfigurationen von Kubernetes benutzen. Wir mussten daher nur noch die entsprechenden "yaml"-Files ausführen. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten.
 ![Jenkins](bilder/jenkins.png)
 Über die REST-API haben wir in Kanboard ein Projekt angelegt.
 ![kanboard](bilder/kanboard.png)
@@ -111,12 +111,17 @@ Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den be
 ### Schritt 4
  Anschliessend haben wir zum Ausführen des Programm ein Dockerfile erstellt:
 ```
-FROM openjdk:latest
-COPY /target /tmp
+FROM ubuntu:latest
+RUN apt-get update
+RUN export DEBIAN_FRONTEND=noninteractive
+RUN apt-get install -q -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" openjdk-8-jdk
+RUN apt install -y git
+RUN git clone https://github.com/liviobue/Wahlmodul906
+RUN cp Wahlmodul906/target/my-app-1.0-SNAPSHOT.jar /tmp
 ```
 Mit folgendem Befehl kann man das Java-Programm ausführen nachdem das Image gebuildet wurde.
 ```
-docker run --rm javaapp java -cp tmp/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+docker run --rm liviobue/w906:latest java -cp /tmp/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
 Wenn alles funktioniert hat, sollte folgende ausgabe erscheinen:
 ![javaapp](bilder/myjavaapp.png)
@@ -136,7 +141,7 @@ In unseren Lehrfirmen, haben wir auch bereits mit solchen Tools gearbeitet. Jedo
 | Livio   | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Mittlere Kennisse | Mittlere Kenntnisse |
 | Leandro | Gute Kenntnisse | Gute Kenntnisse | Mittlere Kenntnisse | Gute Kenntnisse | Geringe Kennisse | Mittlere Kenntnisse |
 
-Wie man sehen kann hat sich unser Wissensstand in allen Beriechen verbessert. Zum Teil waren die Wissensständ noch sehr tief, diese Lücken konnten nun gefüllt werden. 
+Wie man sehen kann hat sich unser Wissensstand in allen Beriechen verbessert. Zum Teil waren die Wissensständ noch sehr tief, diese Lücken konnten nun gefüllt werden.
 
 # Schlusswort
 Wir können das Modul mit einem glücklichen Gefühl beenden und unserer neu erlerntes Wissen bestimmt weiter einsetzen. Schlussendlich habe ich aber das Gefühl, dass es für kleine Unternhemen nicht lohnt eine eigene DevOps-Infrastruktur aufzubauen. Diese Firmen sollte lieber auf MIcrosoft Azure, GitHub oder Amazom Services setzen.
