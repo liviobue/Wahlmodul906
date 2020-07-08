@@ -106,6 +106,11 @@ Im Anschluss haben wir unser Programm auf GitHub hochgeladen. Nun haben wir unse
 Jenkins und Kenboard laufen in der TBZ Cloud. Diese Tools konnten wir mit den bereits vorhandenen Konfigurationen von Kubernetes benutzen. Wir mussten daher nur noch die entsprechenden "yaml"-Files ausführen. Mit dem Befehl ```kubectl apply -f./jenkins.yaml``` konnten wir das Programm Jenkins in einem Container starten.
 ![Jenkins](bilder/jenkins.png)
 Über die REST-API haben wir in Kanboard ein Projekt angelegt.
+
+```
+curl -u "admin:admin" http://192.168.152.12:32200/jsonrpc.php -d '{"jsonrpc": "2.0","method": "createMyPrivateProject","id": 1271580569,"params": ["my project"]}'
+```
+
 ![kanboard](bilder/kanboard.png)
 
 ### Schritt 4
